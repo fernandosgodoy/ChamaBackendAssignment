@@ -2,11 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace ApplicationApp.Interfaces
+namespace ChamaUniversity.Application.Courses
 {
-    public interface ICourseApp
-        : IGenericApp<Course>
+    public class CourseBusiness
     {
+
     }
 }

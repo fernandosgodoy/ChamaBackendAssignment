@@ -10,7 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ChamaUniversity.Domain\ChamaUniversity.Domain.csproj" />
     <ProjectReference Include="..\ChamaUniversity.Entities\ChamaUniversity.Entities.csproj" />
   </ItemGroup>
 

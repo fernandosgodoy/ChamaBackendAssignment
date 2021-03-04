@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ChamaUniversity.Application\ChamaUniversity.Application.csproj" />
-    <ProjectReference Include="..\ChamaUniversity.Domain\ChamaUniversity.Domain.csproj" />
     <ProjectReference Include="..\ChamaUniversity.Dtos\ChamaUniversity.Dtos.csproj" />
     <ProjectReference Include="..\ChamaUniversity.Entities\ChamaUniversity.Entities.csproj" />
     <ProjectReference Include="..\ChamaUniversity.Infrastructure\ChamaUniversity.Infrastructure.csproj" />

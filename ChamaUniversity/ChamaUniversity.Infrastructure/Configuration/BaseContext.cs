@@ -10,26 +10,12 @@ namespace Infrastructure.Configuration
         : DbContext
     {
 
-        public DbSet<Course> Courses { get; set; }
-
-
         public BaseContext(DbContextOptions<BaseContext> options)
             : base(options)
         {
             Database.EnsureCreated();
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-                optionsBuilder.UseSqlServer(GetConnectionStringConfig());
-            base.OnConfiguring(optionsBuilder);
-        }
-
-        private string GetConnectionStringConfig()
-        {
-            return "";
-        }
 
     }
 }
