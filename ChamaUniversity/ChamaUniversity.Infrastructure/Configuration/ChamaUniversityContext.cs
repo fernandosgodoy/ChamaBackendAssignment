@@ -1,13 +1,15 @@
 ﻿using ChamaUniversity.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace ChamaUniversity.Data.Configuration
 {
     public class ChamaUniversityContext
-        : BaseContext
+        : DbContext
     {
 
         private readonly IServiceProvider serviceProvider;
@@ -17,22 +19,29 @@ namespace ChamaUniversity.Data.Configuration
             this.serviceProvider = serviceProvider;
         }
 
-        public ChamaUniversityContext(DbContextOptions<BaseContext> options, 
+        public ChamaUniversityContext(DbContextOptions<ChamaUniversityContext> options, 
             IServiceProvider serviceProvider)
             : base(options)
         {
             this.serviceProvider = serviceProvider;
         }
 
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    if (!optionsBuilder.IsConfigured)
+        //    {
+        //        IConfigurationRoot configuration = new ConfigurationBuilder()
+        //           .SetBasePath(Directory.GetCurrentDirectory())
+        //           .AddJsonFile("appsettings.json")
+        //           .Build();
+        //        var connectionString = configuration.GetConnectionString("DefaultConnection");
+        //        optionsBuilder.UseSqlServer(connectionString);
+        //    }
+        //}
+
         public DbSet<Course> Courses { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<StudentCourse> StudentsCourses { get; set; }
-
-        //public ChamaUniversityContext(DbContextOptions<BaseContext> options) 
-        //    : base(options)
-        //{
-        //}
-        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

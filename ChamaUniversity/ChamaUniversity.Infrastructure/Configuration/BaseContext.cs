@@ -6,18 +6,18 @@ using System.Text;
 
 namespace ChamaUniversity.Data.Configuration
 {
-    public class BaseContext
-        : DbContext
-    {
+    //public class BaseContext
+    //    : DbContext
+    //{
 
-        public BaseContext() { }
+    //    public BaseContext() { }
 
-        public BaseContext(DbContextOptions<BaseContext> options)
-            : base(options)
-        {
-            //Database.EnsureCreated();
-        }
+    //    public BaseContext(DbContextOptions<BaseContext> options)
+    //        : base(options)
+    //    {
+    //        //Database.EnsureCreated();
+    //    }
 
 
-    }
+    //}
 }
