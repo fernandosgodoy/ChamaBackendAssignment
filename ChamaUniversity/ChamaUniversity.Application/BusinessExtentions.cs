@@ -1,4 +1,5 @@
 ﻿using ChamaUniversity.Application.Courses;
+using ChamaUniversity.Application.Statistics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -12,6 +13,8 @@ namespace ChamaUniversity.Util.Application
             IConfiguration configuration)
         {
             services.AddScoped<CourseBusiness>();
+            services.AddScoped<StatisticsBusiness>();
+
             return services;
         }
     }

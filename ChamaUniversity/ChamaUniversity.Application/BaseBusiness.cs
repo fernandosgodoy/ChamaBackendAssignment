@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ChamaUniversity.Application
 {
-    public abstract class BaseBusiness
+    public class BaseBusiness
     {
         protected readonly ChamaUniversityContext dbContext;
 

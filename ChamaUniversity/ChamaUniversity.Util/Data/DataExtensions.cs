@@ -17,7 +17,6 @@ namespace ChamaUniversity.Util.Data
             services.AddDbContext<TContext>(options =>
             {
                 options.ConfigureWarnings(w => w.Default(WarningBehavior.Throw));
-                options.ConfigureWarnings(w => w.Ignore(SqlServerEventId.DecimalTypeKeyWarning));
                 options.ConfigureWarnings(w => w.Ignore(RelationalEventId.MultipleCollectionIncludeWarning));
                 options.ConfigureWarnings(w => w.Ignore(CoreEventId.FirstWithoutOrderByAndFilterWarning));
                 options.ConfigureWarnings(w => w.Ignore(CoreEventId.RowLimitingOperationWithoutOrderByWarning));

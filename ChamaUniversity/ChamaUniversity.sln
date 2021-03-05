@@ -25,7 +25,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5-Framework and Tests", "5-
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChamaUniversity.Util", "ChamaUniversity.Util\ChamaUniversity.Util.csproj", "{A9D96447-316B-4459-9345-63068D0766F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChamaUniversity.UnitTest", "ChamaUniversity.UnitTest\ChamaUniversity.UnitTest.csproj", "{371FEFB2-F011-418A-B790-1C681516B3C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChamaUniversity.UnitTest", "ChamaUniversity.UnitTest\ChamaUniversity.UnitTest.csproj", "{371FEFB2-F011-418A-B790-1C681516B3C6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6-Jobs", "6-Jobs", "{7FDE1DAA-3CA4-4BA5-BAA4-CE1578F540C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChamaUniversity.Jobs", "ChamaUniversity.Jobs\ChamaUniversity.Jobs.csproj", "{CD095CF9-6A67-4AA1-9C0F-154A17C7922A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChamaUniversity.UnitofWork", "ChamaUniversity.UnitofWork\ChamaUniversity.UnitofWork.csproj", "{D2BE6D81-4F48-4232-8137-4F6338C4552C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +67,14 @@ Global
 		{371FEFB2-F011-418A-B790-1C681516B3C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{371FEFB2-F011-418A-B790-1C681516B3C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{371FEFB2-F011-418A-B790-1C681516B3C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD095CF9-6A67-4AA1-9C0F-154A17C7922A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD095CF9-6A67-4AA1-9C0F-154A17C7922A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD095CF9-6A67-4AA1-9C0F-154A17C7922A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD095CF9-6A67-4AA1-9C0F-154A17C7922A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2BE6D81-4F48-4232-8137-4F6338C4552C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2BE6D81-4F48-4232-8137-4F6338C4552C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2BE6D81-4F48-4232-8137-4F6338C4552C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2BE6D81-4F48-4232-8137-4F6338C4552C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,6 +87,8 @@ Global
 		{7E62F920-DD51-4F4A-AB13-D1C0F4078EB2} = {E170FF69-DD94-4EB3-A7D7-EFCD260E5E8F}
 		{A9D96447-316B-4459-9345-63068D0766F0} = {A3F932D7-93A4-4CB0-8167-EBB9A57E42B1}
 		{371FEFB2-F011-418A-B790-1C681516B3C6} = {A3F932D7-93A4-4CB0-8167-EBB9A57E42B1}
+		{CD095CF9-6A67-4AA1-9C0F-154A17C7922A} = {7FDE1DAA-3CA4-4BA5-BAA4-CE1578F540C0}
+		{D2BE6D81-4F48-4232-8137-4F6338C4552C} = {C71EDBAC-BFCD-494E-BEF0-860B46BA271F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A718FBC1-03F2-4D90-B6ED-DCE2F3A1386F}

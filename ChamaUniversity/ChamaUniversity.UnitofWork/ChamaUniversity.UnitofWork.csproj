@@ -5,11 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ChamaUniversity.Dtos\ChamaUniversity.Dtos.csproj" />
     <ProjectReference Include="..\ChamaUniversity.Entities\ChamaUniversity.Entities.csproj" />
     <ProjectReference Include="..\ChamaUniversity.Infrastructure\ChamaUniversity.Data.csproj" />
-    <ProjectReference Include="..\ChamaUniversity.UnitofWork\ChamaUniversity.UnitofWork.csproj" />
-    <ProjectReference Include="..\ChamaUniversity.Util\ChamaUniversity.Util.csproj" />
   </ItemGroup>
 
 </Project>

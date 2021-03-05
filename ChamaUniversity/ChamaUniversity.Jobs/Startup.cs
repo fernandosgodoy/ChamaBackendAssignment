@@ -1,6 +1,7 @@
 using ChamaUniversity.Data.Configuration;
 using ChamaUniversity.Jobs.CronJobs;
 using ChamaUniversity.Jobs.CronJobs.Statistics;
+using ChamaUniversity.UnitofWork.MethodExtensions;
 using ChamaUniversity.Util.Application;
 using ChamaUniversity.Util.Data;
 using ChamaUniversity.Util.Jobs;
@@ -46,13 +47,21 @@ namespace ChamaUniversity.Jobs
 
             services.AddBusiness(this.Configuration);
 
+            RegisterTheUnitOfWork(services);
+
             services.AddCronJob<StatisticJob>(c =>
             {
                 c.TimeZoneInfo = TimeZoneInfo.Local;
                 c.CronExpression = @"*/1 * * * *";      // ==> You can define your schedule time.
                 //I defined 1 minute for tests.
             });
+        }
 
+        private void RegisterTheUnitOfWork(IServiceCollection services)
+        {
+            ServiceProvider serviceProvider = services.BuildServiceProvider();
+            ChamaUniversityContext appDbContext = serviceProvider.GetService<ChamaUniversityContext>();
+            services.RegisterTheUnityOfWork(appDbContext);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
