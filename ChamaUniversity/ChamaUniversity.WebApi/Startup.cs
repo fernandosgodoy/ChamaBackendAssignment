@@ -1,7 +1,10 @@
+using ChamaUniversity.Data.Configuration;
 using ChamaUniversity.Util.Application;
+using ChamaUniversity.Util.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,13 +28,27 @@ namespace ChamaUniversity.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ChamaUniversityContext>(this.Configuration, "DefaultConnection");
+
+            services.AddScoped<DbContext, ChamaUniversityContext>();
+
+            services.AddDbContext<DbContext>(option =>
+                option.UseSqlServer(
+                    "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=ChamaUniversity;Persist Security Info=True;"
+                    ));
+            
+
+        //services.AddScoped<IStudentService, StudentService>();
+
             services.AddControllers();
-            services.AddBusiness(this.Configuration);
+                services.AddBusiness(this.Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCors();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

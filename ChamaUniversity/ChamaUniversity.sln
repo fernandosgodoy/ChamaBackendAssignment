@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-Entities", "4-Entities", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChamaUniversity.Entities", "ChamaUniversity.Entities\ChamaUniversity.Entities.csproj", "{429B6557-F03B-4CAD-85FA-0081E3452D13}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChamaUniversity.Infrastructure", "ChamaUniversity.Infrastructure\ChamaUniversity.Infrastructure.csproj", "{E0B449AD-25D9-4932-84FE-2649E753F596}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChamaUniversity.Data", "ChamaUniversity.Infrastructure\ChamaUniversity.Data.csproj", "{E0B449AD-25D9-4932-84FE-2649E753F596}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChamaUniversity.Application", "ChamaUniversity.Application\ChamaUniversity.Application.csproj", "{EDBE3F26-98B0-4E23-BFBD-7B64321B10AD}"
 EndProject

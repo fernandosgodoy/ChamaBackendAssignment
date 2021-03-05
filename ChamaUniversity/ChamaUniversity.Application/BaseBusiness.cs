@@ -1,4 +1,4 @@
-﻿using ChamaUniversity.Infrastructure.Configuration;
+﻿using ChamaUniversity.Data.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Text;

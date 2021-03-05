@@ -1,7 +1,7 @@
-﻿using ChamaUniversity.Dtos.Courses;
+﻿using ChamaUniversity.Data.Configuration;
+using ChamaUniversity.Dtos.Courses;
 using ChamaUniversity.Dtos.Messages;
 using ChamaUniversity.Entities;
-using ChamaUniversity.Infrastructure.Configuration;
 using ChamaUniversity.Util.Exceptions;
 using Microsoft.EntityFrameworkCore;
 using System;
