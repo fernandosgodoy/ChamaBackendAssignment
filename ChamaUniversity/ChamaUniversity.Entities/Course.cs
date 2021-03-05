@@ -1,6 +1,7 @@
 ﻿using ChamaUniversity.Entities.Base;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace ChamaUniversity.Entities
@@ -9,9 +10,14 @@ namespace ChamaUniversity.Entities
         : BaseEntity
     {
 
+        [Required]
         public int Capacity { get; set; }
-        public int TotalStudents { get; set; }
-        public int NumberOfStudents { get; set; }
+
+        [Required]
+        public int TotalStudents { get; set; } = 0;
+
+        [Required]
+        public int NumberOfStudents { get; set; } = 0;
 
     }
 }

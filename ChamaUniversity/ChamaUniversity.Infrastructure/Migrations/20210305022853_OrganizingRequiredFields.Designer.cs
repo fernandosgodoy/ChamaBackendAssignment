@@ -4,14 +4,16 @@ using ChamaUniversity.Data.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ChamaUniversity.Data.Migrations
 {
     [DbContext(typeof(ChamaUniversityContext))]
-    partial class ChamaUniversityContextModelSnapshot : ModelSnapshot
+    [Migration("20210305022853_OrganizingRequiredFields")]
+    partial class OrganizingRequiredFields
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
