@@ -47,6 +47,21 @@ namespace ChamaUniversity.Application.Courses
             return result;
         }
 
+        public async Task<CourseDto> GetByIdAsync(long id)
+        {
+            return await this.dbContext.Courses
+                .Where(fsf => fsf.Id == id)
+                .Select(c => new CourseDto()
+                {
+                    Capacity = c.Capacity,
+                    Id = c.Id,
+                    NumberOfStudents = c.NumberOfStudents
+                })
+                .FirstOrDefaultAsync();
+        }
+
+        #region Private Methods
+
         private async Task EnsureIsValidAsync(SignUpToCourseDto signupCourseParameter)
         {
             var ex = new BusinessException();
@@ -61,15 +76,17 @@ namespace ChamaUniversity.Application.Courses
 
                 if (student == null)
                     ex.AddError("There's no student with this email.");
+                else
+                {
+                    signupCourseParameter.Student.Id = student.Id;
 
-                signupCourseParameter.Student.Id = student.Id;
+                    var course = await this.dbContext.Courses
+                        .Where(c => c.Id == signupCourseParameter.CourseId)
+                        .SingleOrDefaultAsync();
 
-                var course = await this.dbContext.Courses
-                    .Where(c => c.Id == signupCourseParameter.CourseId)
-                    .SingleOrDefaultAsync();
-
-                if (course == null)
-                    ex.AddError("The course doesn't exists.");
+                    if (course == null)
+                        ex.AddError("The course doesn't exists.");
+                }
             }
 
             ex.ThrowIfHasErrors();
@@ -88,15 +105,19 @@ namespace ChamaUniversity.Application.Courses
                 })
                 .SingleOrDefaultAsync();
 
-            
-
             if (courseInfo == null)
                 ex.AddError("Course not found.");
             else if (courseInfo.Capacity == courseInfo.NumberOfStudents)
                 ex.AddError("Hey buddy, the course is full, go home!!");
 
+            if (await dbContext.StudentsCourses.AnyAsync(sc => sc.StudentId == signupCourseParameter.Student.Id 
+                && sc.CourseId == signupCourseParameter.CourseId))
+                ex.AddError("You can't signup for this course again");
+
             ex.ThrowIfHasErrors();
         }
+
+        #endregion
 
     }
 }

@@ -21,6 +21,9 @@ namespace ChamaUniversity.WebApi.Controllers
             [FromBody] SignUpToCourseDto signupCourseParameter,
             [FromServices] CourseBusiness courseBusiness)
         {
+            if (!this.ModelState.IsValid)
+                return this.BadRequest(this.ModelState);
+
             return await courseBusiness.SignUpStudentAsync(signupCourseParameter);
         }
 
