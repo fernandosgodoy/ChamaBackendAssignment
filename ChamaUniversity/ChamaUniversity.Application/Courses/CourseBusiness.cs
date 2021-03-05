@@ -23,26 +23,34 @@ namespace ChamaUniversity.Application.Courses
         public async Task<ResultDto> SignUpStudentAsync(SignUpToCourseDto signupCourseParameter)
         {
             var result = new ResultDto();
+            var valid = await EnsureIsValidAsync(signupCourseParameter);
+            var businessValidation = await EnsureTheBusinessRulesAsync(signupCourseParameter);
 
-            await EnsureIsValidAsync(signupCourseParameter);
-            await EnsureTheBusinessRulesAsync(signupCourseParameter);
-
-            var newStudentCourse = new StudentCourse()
+            if (valid.Success && businessValidation.Success)
             {
-                CourseId = signupCourseParameter.CourseId,
-                StudentId = signupCourseParameter.Student.Id
-            };
-            this.dbContext.StudentsCourses.Add(newStudentCourse);
-            await this.dbContext.SaveChangesAsync();
+                var newStudentCourse = new StudentCourse()
+                {
+                    CourseId = signupCourseParameter.CourseId,
+                    StudentId = signupCourseParameter.Student.Id
+                };
+                this.dbContext.StudentsCourses.Add(newStudentCourse);
+                await this.dbContext.SaveChangesAsync();
 
-            //Update the course info.
-            var courseInfo = await this.dbContext.Courses
-                .Where(c => c.Id == signupCourseParameter.CourseId)
-                .FirstOrDefaultAsync();
+                //Update the course info.
+                var courseInfo = await this.dbContext.Courses
+                    .Where(c => c.Id == signupCourseParameter.CourseId)
+                    .FirstOrDefaultAsync();
 
-            courseInfo.NumberOfStudents += 1;
-            await this.dbContext.SaveChangesAsync();
-            result.Success = true;
+                courseInfo.NumberOfStudents += 1;
+                await this.dbContext.SaveChangesAsync();
+                result.Success = true;
+            }
+            else
+            {
+                //The worker tries to sign up the student then notifies the student whether signing up succeeded or not
+                result.Messages.AddRange(valid.Messages);
+                result.Messages.AddRange(businessValidation.Messages);
+            }
 
             return result;
         }
@@ -62,12 +70,12 @@ namespace ChamaUniversity.Application.Courses
 
         #region Private Methods
 
-        private async Task EnsureIsValidAsync(SignUpToCourseDto signupCourseParameter)
+        private async Task<ResultDto> EnsureIsValidAsync(SignUpToCourseDto signupCourseParameter)
         {
-            var ex = new BusinessException();
+            var result = new ResultDto();
 
             if (signupCourseParameter.Student == null)
-                ex.AddError("Student not informed.");
+                result.Messages.Add("Student not informed.");
             else
             {
                 var student = await this.dbContext.Students
@@ -75,7 +83,7 @@ namespace ChamaUniversity.Application.Courses
                     .SingleOrDefaultAsync();
 
                 if (student == null)
-                    ex.AddError("There's no student with this email.");
+                    result.Messages.Add("There's no student with this email.");
                 else
                 {
                     signupCourseParameter.Student.Id = student.Id;
@@ -85,16 +93,18 @@ namespace ChamaUniversity.Application.Courses
                         .SingleOrDefaultAsync();
 
                     if (course == null)
-                        ex.AddError("The course doesn't exists.");
+                        result.Messages.Add("The course doesn't exists.");
+                    else 
+                        result.Success = true;
                 }
             }
 
-            ex.ThrowIfHasErrors();
+            return result;
         }
 
-        private async Task EnsureTheBusinessRulesAsync(SignUpToCourseDto signupCourseParameter)
+        private async Task<ResultDto> EnsureTheBusinessRulesAsync(SignUpToCourseDto signupCourseParameter)
         {
-            var ex = new BusinessException();
+            var result = new ResultDto();
 
             var courseInfo = await dbContext.Courses
                 .Where(c => c.Id == signupCourseParameter.CourseId)
@@ -106,15 +116,21 @@ namespace ChamaUniversity.Application.Courses
                 .SingleOrDefaultAsync();
 
             if (courseInfo == null)
-                ex.AddError("Course not found.");
+                result.Messages.Add("Course not found.");
             else if (courseInfo.Capacity == courseInfo.NumberOfStudents)
-                ex.AddError("Hey buddy, the course is full, go home!!");
+                result.Messages.Add("Hey buddy, the course is full, go home!!");
+            else
+            {
+                if (await dbContext.StudentsCourses.AnyAsync(sc => sc.StudentId == signupCourseParameter.Student.Id
+                    && sc.CourseId == signupCourseParameter.CourseId))
+                    result.Messages.Add("You can't signup for this course again");
+                else
+                    result.Success = true;
+            }
 
-            if (await dbContext.StudentsCourses.AnyAsync(sc => sc.StudentId == signupCourseParameter.Student.Id 
-                && sc.CourseId == signupCourseParameter.CourseId))
-                ex.AddError("You can't signup for this course again");
+            
 
-            ex.ThrowIfHasErrors();
+            return result;
         }
 
         #endregion

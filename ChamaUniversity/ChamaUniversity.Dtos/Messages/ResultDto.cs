@@ -7,14 +7,9 @@ namespace ChamaUniversity.Dtos.Messages
     public class ResultDto
     {
 
-        public ResultDto()
-        {
-            Messages = new List<string>();
-        }
-
-        public int InsertedId { get; set; }
-        public bool Success { get; set; }
-        public List<string> Messages { get; set; }
+        public int InsertedId { get; set; } = 0;
+        public bool Success { get; set; } = false;
+        public List<string> Messages { get; set; } = new List<string>();
 
     }
 }
