@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using ChamaUniversity.UnitofWork;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,6 @@ namespace ChamaUniversity.Jobs.CronJobs
     {
         public string CronExpression { get; set; }
         public TimeZoneInfo TimeZoneInfo { get; set; }
+        public IUnitOfWork UnitOfWork { get; set; }
     }
 }

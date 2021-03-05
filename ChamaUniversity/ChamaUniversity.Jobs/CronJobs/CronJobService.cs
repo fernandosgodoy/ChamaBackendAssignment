@@ -1,6 +1,7 @@
 ﻿using ChamaUniversity.Application;
 using ChamaUniversity.Application.Statistics;
 using ChamaUniversity.Data.Configuration;
+using ChamaUniversity.UnitofWork;
 using Cronos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
@@ -19,20 +20,15 @@ namespace ChamaUniversity.Jobs.CronJobs
         private System.Timers.Timer _timer;
         private readonly CronExpression _expression;
         private readonly TimeZoneInfo _timeZoneInfo;
-        private readonly ChamaUniversityContext _context;
+        private readonly IUnitOfWork _unitOfWork;
 
-        protected CronJobService(string cronExpression, TimeZoneInfo timeZoneInfo)
+        protected CronJobService(string cronExpression, 
+            TimeZoneInfo timeZoneInfo,
+            IUnitOfWork unitOfWork)
         {
             _expression = CronExpression.Parse(cronExpression);
             _timeZoneInfo = timeZoneInfo;
-        }
-
-        protected CronJobService(string cronExpression, TimeZoneInfo timeZoneInfo,
-            ChamaUniversityContext context)
-        {
-            _expression = CronExpression.Parse(cronExpression);
-            _timeZoneInfo = timeZoneInfo;
-            _context = context;
+            _unitOfWork = unitOfWork;
         }
 
         public virtual async Task StartAsync(CancellationToken cancellationToken)
@@ -56,7 +52,7 @@ namespace ChamaUniversity.Jobs.CronJobs
                     _timer = null;
 
                     if (!cancellationToken.IsCancellationRequested)
-                        await DoWork(cancellationToken, new StatisticsBusiness(_context));
+                        await DoWork(cancellationToken, new StatisticsBusiness(_unitOfWork));
 
                     if (!cancellationToken.IsCancellationRequested)
                         await ScheduleJob(cancellationToken);    // reschedule next

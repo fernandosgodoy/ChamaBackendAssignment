@@ -19,7 +19,7 @@ namespace ChamaUniversity.Jobs.CronJobs.Statistics
         private readonly ILogger<StatisticJob> _logger;
 
         public StatisticJob(IScheduleConfig<StatisticJob> config, ILogger<StatisticJob> logger)
-            : base(config.CronExpression, config.TimeZoneInfo)
+            : base(config.CronExpression, config.TimeZoneInfo, config.UnitOfWork)
         {
             _logger = logger;
         }
