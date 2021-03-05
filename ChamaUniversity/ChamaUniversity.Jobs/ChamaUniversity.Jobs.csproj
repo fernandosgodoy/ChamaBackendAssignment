@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Cronos" Version="0.7.0" />
+    <PackageReference Include="Hangfire.Core" Version="1.7.19" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ChamaUniversity.Application\ChamaUniversity.Application.csproj" />
+    <ProjectReference Include="..\ChamaUniversity.Dtos\ChamaUniversity.Dtos.csproj" />
+    <ProjectReference Include="..\ChamaUniversity.Entities\ChamaUniversity.Entities.csproj" />
+    <ProjectReference Include="..\ChamaUniversity.Infrastructure\ChamaUniversity.Data.csproj" />
+    <ProjectReference Include="..\ChamaUniversity.Util\ChamaUniversity.Util.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
+
+</Project>
