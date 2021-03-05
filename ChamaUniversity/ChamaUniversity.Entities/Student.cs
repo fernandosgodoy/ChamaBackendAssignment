@@ -5,13 +5,11 @@ using System.Text;
 
 namespace ChamaUniversity.Entities
 {
-    public class Course
+    public class Student
         : BaseEntity
     {
-
-        public int Capacity { get; set; }
-        public int TotalStudents { get; set; }
-        public int NumberOfStudents { get; set; }
-
+        public string Email { get; set; }
+        public string Name { get; set; }
+        public DateTime DateOfBirth { get; set; }
     }
 }

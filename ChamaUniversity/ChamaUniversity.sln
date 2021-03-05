@@ -19,11 +19,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChamaUniversity.Infrastruct
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChamaUniversity.Application", "ChamaUniversity.Application\ChamaUniversity.Application.csproj", "{EDBE3F26-98B0-4E23-BFBD-7B64321B10AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChamaUniversity.Dtos", "ChamaUniversity.Dtos\ChamaUniversity.Dtos.csproj", "{7E62F920-DD51-4F4A-AB13-D1C0F4078EB2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChamaUniversity.Dtos", "ChamaUniversity.Dtos\ChamaUniversity.Dtos.csproj", "{7E62F920-DD51-4F4A-AB13-D1C0F4078EB2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5-Framework and Tests", "5-Framework and Tests", "{A3F932D7-93A4-4CB0-8167-EBB9A57E42B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChamaUniversity.Util", "ChamaUniversity.Util\ChamaUniversity.Util.csproj", "{A9D96447-316B-4459-9345-63068D0766F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChamaUniversity.Util", "ChamaUniversity.Util\ChamaUniversity.Util.csproj", "{A9D96447-316B-4459-9345-63068D0766F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChamaUniversity.UnitTest", "ChamaUniversity.UnitTest\ChamaUniversity.UnitTest.csproj", "{371FEFB2-F011-418A-B790-1C681516B3C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +57,10 @@ Global
 		{A9D96447-316B-4459-9345-63068D0766F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9D96447-316B-4459-9345-63068D0766F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9D96447-316B-4459-9345-63068D0766F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{371FEFB2-F011-418A-B790-1C681516B3C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{371FEFB2-F011-418A-B790-1C681516B3C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{371FEFB2-F011-418A-B790-1C681516B3C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{371FEFB2-F011-418A-B790-1C681516B3C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,6 +72,7 @@ Global
 		{EDBE3F26-98B0-4E23-BFBD-7B64321B10AD} = {E170FF69-DD94-4EB3-A7D7-EFCD260E5E8F}
 		{7E62F920-DD51-4F4A-AB13-D1C0F4078EB2} = {E170FF69-DD94-4EB3-A7D7-EFCD260E5E8F}
 		{A9D96447-316B-4459-9345-63068D0766F0} = {A3F932D7-93A4-4CB0-8167-EBB9A57E42B1}
+		{371FEFB2-F011-418A-B790-1C681516B3C6} = {A3F932D7-93A4-4CB0-8167-EBB9A57E42B1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A718FBC1-03F2-4D90-B6ED-DCE2F3A1386F}
